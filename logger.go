@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/rogeecn/atom-addons/providers/log"
+	"github.com/atom-providers/log"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/utils"
