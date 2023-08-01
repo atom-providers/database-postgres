@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/atom-providers/log v0.0.0-20230801024233-a65b67115343
-	github.com/rogeecn/atom v1.0.4
+	github.com/rogeecn/atom v1.0.6
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.2
 )
