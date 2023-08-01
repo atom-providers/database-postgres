@@ -3,7 +3,7 @@ module github.com/atom-providers/database-postgres
 go 1.18
 
 require (
-	github.com/atom-providers/log v0.0.0-20230731102101-c690ec235b6c
+	github.com/atom-providers/log v0.0.0-20230801024233-a65b67115343
 	github.com/rogeecn/atom v1.0.3
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.2
@@ -20,7 +20,6 @@ require (
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.9 // indirect
-	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
