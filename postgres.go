@@ -3,6 +3,7 @@ package postgres
 import (
 	"log"
 
+	"github.com/atom-providers/app"
 	"github.com/rogeecn/atom/container"
 	"github.com/rogeecn/atom/utils/opt"
 
@@ -19,11 +20,16 @@ func Provide(opts ...opt.Option) error {
 		return err
 	}
 
-	return container.Container.Provide(func() (*gorm.DB, error) {
+	return container.Container.Provide(func(app *app.Config) (*gorm.DB, error) {
 		dbConfig := postgres.Config{
 			DSN: conf.DSN(), // DSN data source name
 		}
 		log.Println("PostgreSQL DSN: ", dbConfig.DSN)
+
+		l := &Logger{Level: logger.Warn}
+		if app.IsDevMode() {
+			l.Level = logger.Info
+		}
 
 		gormConfig := gorm.Config{
 			NamingStrategy: schema.NamingStrategy{
@@ -31,7 +37,7 @@ func Provide(opts ...opt.Option) error {
 				SingularTable: conf.Singular,
 			},
 			DisableForeignKeyConstraintWhenMigrating: true,
-			Logger:                                   &Logger{Level: logger.Info},
+			Logger:                                   l,
 		}
 
 		db, err := gorm.Open(postgres.New(dbConfig), &gormConfig)
