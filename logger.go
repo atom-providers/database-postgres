@@ -29,6 +29,10 @@ func (g *Logger) Warn(_ context.Context, msg string, params ...interface{}) {
 	log.Warnf(msg, params)
 }
 
+func (g *Logger) Debug(_ context.Context, msg string, params ...interface{}) {
+	log.Debugf(msg, params)
+}
+
 func (g *Logger) Error(_ context.Context, msg string, params ...interface{}) {
 	log.Errorf(msg, params)
 }
@@ -60,9 +64,9 @@ func (g *Logger) Trace(ctx context.Context, begin time.Time, fc func() (sql stri
 		}
 	case g.Level == logger.Info:
 		if rows == -1 {
-			g.Info(ctx, traceStr, utils.FileWithLineNum(), float64(elapsed.Nanoseconds())/1e6, "-", sql)
+			g.Debug(ctx, traceStr, utils.FileWithLineNum(), float64(elapsed.Nanoseconds())/1e6, "-", sql)
 		} else {
-			g.Info(ctx, traceStr, utils.FileWithLineNum(), float64(elapsed.Nanoseconds())/1e6, rows, sql)
+			g.Debug(ctx, traceStr, utils.FileWithLineNum(), float64(elapsed.Nanoseconds())/1e6, rows, sql)
 		}
 	}
 }
